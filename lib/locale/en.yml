@@ -1,0 +1,13 @@
+en:
+  actions:
+    all:
+      create:
+        success: "New %{object} is created!"
+        failure: "%{object} couldn't be created!"
+      update:
+        success: "%{object} is updated!"
+        failure: "%{object} couldn't be updated!"
+      destroy:
+        success: "%{object} is deleted!"
+        failure: "%{object} couldn't be deleted!"
+
