@@ -1,13 +1,57 @@
-IFlash
-======
+= IFlash
 
-Introduction goes here.
+Rails Flash Internationalization Plugin.
 
+Easily sets flash messages in your controllers, reading from locale.yml files.
 
-Example
-=======
+== Install
 
-Example goes here.
+  gem install i_flash
 
+== Usage
 
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+=== In your controller:
+
+  i_flash :success
+  i_flash :failure
+  i_flash_auto :success
+  i_flash_auto :failure
+  i_flash_for some_condition?
+
+=== In your locale file (en.yml)
+
+  en:
+    actions:
+      controller_name:
+        action_name:
+          success: "Action is successful!"
+          failure: "Action failed!"
+
+=== In your view (or layout)
+
+  = notice
+  = alert
+
+== Example
+
+=== /app/controllers/posts_controller.rb:
+
+  def destroy
+    @post = Post.where(params[:id]).first
+    i_flash_for @post.delete
+    redirect_to :back
+  end
+
+=== /config/locales/en.yml:
+
+  en:
+    actions:
+      posts:
+        destroy:
+          success: "Post is deleted."
+          failure: "Couldn't delete post."
+
+= Copyright
+
+Copyright (c) 2010 [vladalive.com], released under the MIT license
+
